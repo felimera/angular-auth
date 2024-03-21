@@ -44,6 +44,9 @@ export class AuthService {
   }
 
   checkAuthStatus(): Observable<boolean> {
+
+    if (typeof window === 'undefined') return of(false);
+
     const url: string = `${this.baseUrl}/auth/check-token`;
     const token = localStorage.getItem('token');
 

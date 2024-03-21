@@ -1,5 +1,6 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { AuthService } from './auth/services/auth.service';
+
 import { AuthStatus } from './auth/interfaces';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ export class AppComponent {
   private router = inject(Router);
 
   public finishedAuthCheck = computed<boolean>(() => {
+    console.log(this.authService.authStatus());
     if (this.authService.authStatus() === AuthStatus.checking) {
       return false;
     }
